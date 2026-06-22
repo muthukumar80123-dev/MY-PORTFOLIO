@@ -873,48 +873,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       AUTOPLAY HORIZONTAL CAROUSELS (Continuous Smooth Tickers)
+       AUTOPLAY HORIZONTAL CAROUSELS (Yo-Yo / Reverse Scroll)
        ========================================================================== */
-    function setupAutoScroll(containerSelector, speed = 0.05) {
+    function setupAutoScroll(containerSelector, speed = 0.02) {
         const containers = document.querySelectorAll(containerSelector);
         containers.forEach(container => {
             let lastTime = null;
             let animationFrameId = null;
-            let isInitialized = false;
-            let resetThreshold = null;
-
-            function initInfiniteScroll() {
-                const originalChildren = Array.from(container.children);
-                if (originalChildren.length === 0) return;
-
-                // Clone and append all children to make the loop seamless
-                originalChildren.forEach(child => {
-                    const clone = child.cloneNode(true);
-                    container.appendChild(clone);
-                });
-
-                const firstElement = originalChildren[0];
-                const firstClone = container.children[originalChildren.length];
-                
-                // The distance to scroll before wrapping back to 0
-                resetThreshold = firstClone.offsetLeft - firstElement.offsetLeft;
-
-                // Disable auto-scrolling if the content fits in the container without overflow
-                if (resetThreshold <= container.clientWidth) {
-                    resetThreshold = null;
-                    return;
-                }
-
-                // Bind wrap-around logic on native scroll event for manual swiping too
-                container.addEventListener('scroll', () => {
-                    if (resetThreshold === null) return;
-                    if (container.scrollLeft >= resetThreshold) {
-                        container.scrollLeft -= resetThreshold;
-                    } else if (container.scrollLeft < 0) {
-                        container.scrollLeft += resetThreshold;
-                    }
-                });
-            }
+            let direction = 1; // 1 for forward (right), -1 for backward (left)
 
             function step(timestamp) {
                 if (!lastTime) lastTime = timestamp;
@@ -922,15 +888,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 lastTime = timestamp;
 
                 if (container.offsetWidth > 0 && container.offsetHeight > 0) {
-                    // Initialize lazily if not done yet
-                    if (!isInitialized) {
-                        isInitialized = true;
-                        initInfiniteScroll();
-                    }
+                    const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-                    if (resetThreshold !== null) {
-                        // Scroll subpixel offset based on elapsed time for constant speed
-                        container.scrollLeft += speed * elapsed;
+                    // Only scroll if there is overflow content
+                    if (maxScrollLeft > 0) {
+                        if (direction === 1) {
+                            container.scrollLeft += speed * elapsed;
+                            if (container.scrollLeft >= maxScrollLeft - 1) {
+                                container.scrollLeft = maxScrollLeft;
+                                direction = -1;
+                            }
+                        } else {
+                            container.scrollLeft -= speed * elapsed;
+                            if (container.scrollLeft <= 1) {
+                                container.scrollLeft = 0;
+                                direction = 1;
+                            }
+                        }
                     }
                 }
 
@@ -942,8 +916,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize continuous auto scroll (pixels per millisecond, e.g., 0.04 = ~40px/s)
-    setupAutoScroll('.skills-grid', 0.04);
-    setupAutoScroll('.certifications-grid', 0.04);
-    setupAutoScroll('.achievements-grid', 0.04);
+    // Initialize continuous auto scroll at a slow, premium speed (0.02 px/ms = 20px/s)
+    setupAutoScroll('.skills-grid', 0.02);
+    setupAutoScroll('.certifications-grid', 0.02);
+    setupAutoScroll('.achievements-grid', 0.02);
 });
