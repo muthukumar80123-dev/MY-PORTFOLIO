@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Welcome Preloader Overlay -->
+    <div id="welcome-preloader" class="preloader-overlay">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <span class="logo-accent">&lt;</span>Muthukumar S<span class="logo-accent">/&gt;</span>
+            </div>
+            <h1 class="preloader-title">Welcome to my Portfolio</h1>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Background Grid and Blobs for unique aesthetic -->
     <div class="grid-overlay"></div>
+    <canvas id="bg-canvas"></canvas>
     <div class="blob-container">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -336,91 +350,91 @@
                         <!-- Cert 1 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-circle-check"></i>
+                                <img src="assets/icons/icon_internship.png" alt="Internship Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Internship Completion Certificates</h3>
                             <p class="cert-desc">Granted by EDU TANTR (VLSI Internship Program) and Enthu Technology Solution (PCB Design and Fabrication Internship).</p>
                             <button class="btn btn-text view-cert-btn" data-cert="intern">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 2 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-laptop-code"></i>
+                                <img src="assets/icons/icon_hackathon.png" alt="Hackathon Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Hackathon Participation Certificates</h3>
                             <p class="cert-desc">Issued for active participation and product prototyping in multiple technical events and coding hackathons.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="hackathon">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 3 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-graduation-cap"></i>
+                                <img src="assets/icons/icon_course.png" alt="Course Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Course Completed Certificates</h3>
                             <p class="cert-desc">Granted for successfully finishing technical courses in programming, PCB design, and digital electronics.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="course">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 4 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-trophy"></i>
+                                <img src="assets/icons/icon_competition.png" alt="Competition Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Academic & Technical Competitions</h3>
                             <p class="cert-desc">Awards and recognition from national-level technical competitions, project exhibitions, and paper presentations conducted by bodies like ISRO and ISTE.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="competition">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 5 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-lightbulb"></i>
+                                <img src="assets/icons/icon_bootcamp.png" alt="Bootcamp Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Bootcamps & Idea Development</h3>
                             <p class="cert-desc">Credentials from intensive development programs covering ideation, prototyping, business modeling, and venture planning.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="bootcamp">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 6 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-network-wired"></i>
+                                <img src="assets/icons/icon_networking.png" alt="Networking Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Professional IT & Networking</h3>
                             <p class="cert-desc">Vendor-specific technical credentials validating professional competence in networking, IT routing, and system architecture.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="professional">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
 
                         <!-- Cert 7 -->
                         <div class="cert-card glass-card">
                             <div class="cert-icon-wrapper">
-                                <i class="fa-solid fa-chalkboard-user"></i>
+                                <img src="assets/icons/icon_workshop.png" alt="Workshop Icon" class="cert-icon-img">
                             </div>
                             <h3 class="cert-title">Technical Workshops & Seminars</h3>
                             <p class="cert-desc">Certificates from specialized technical training workshops and seminars on IoT, Embedded AI, and professional branding.</p>
                             <button class="btn btn-text view-cert-btn" data-cert="workshop">
-                                <span>View Details</span>
-                                <i class="fa-solid fa-up-right-from-square"></i>
+                                <span>Verify Credentials</span>
+                                <i class="fa-solid fa-certificate"></i>
                             </button>
                         </div>
                     </div>
@@ -441,7 +455,7 @@
                         <!-- Achievement 1 -->
                         <div class="achievement-card glass-card">
                             <div class="achievement-icon">
-                                <i class="fa-solid fa-medal"></i>
+                                <img src="assets/icons/icon_nptel_medal.png" alt="NPTEL Medal Icon" class="achievement-icon-img">
                             </div>
                             <h3 class="achievement-title">NPTEL Elite + Silver</h3>
                             <p class="achievement-description">Scored 82% in the 12-week national-level course 'Introduction to Internet of Things' conducted by IIT Kharagpur (Jan-Apr 2025).</p>
@@ -450,7 +464,7 @@
                         <!-- Achievement 2 -->
                         <div class="achievement-card glass-card">
                             <div class="achievement-icon">
-                                <i class="fa-solid fa-trophy"></i>
+                                <img src="assets/icons/icon_techsprint_trophy.png" alt="TechSprint Trophy Icon" class="achievement-icon-img">
                             </div>
                             <h3 class="achievement-title">Top 10 Finalist - TechSprint: Vibe X 1.0</h3>
                             <p class="achievement-description">Recognized as a Top 10 Finalist in the VIBE Coding Hackathon organized by GDG On Campus. Built a prototype using Google Technologies and qualified for the Grand Finale Pitch.</p>
@@ -460,7 +474,7 @@
                         <!-- Achievement 3 -->
                         <div class="achievement-card glass-card">
                             <div class="achievement-icon">
-                                <i class="fa-solid fa-award"></i>
+                                <img src="assets/icons/icon_iste_award.png" alt="ISTE Award Icon" class="achievement-icon-img">
                             </div>
                             <h3 class="achievement-title">ISTE Srinivasa Ramanujan Math Competitions</h3>
                             <p class="achievement-description">Qualified and competed up to Level 3 (National Level) of the prestigious National Srinivasa Ramanujan Mathematical Competitions 2025-26 conducted by ISTE.</p>
@@ -469,7 +483,7 @@
                         <!-- Achievement 4 -->
                         <div class="achievement-card glass-card">
                             <div class="achievement-icon">
-                                <i class="fa-solid fa-rocket"></i>
+                                <img src="assets/icons/icon_isro_rocket.png" alt="ISRO Rocket Icon" class="achievement-icon-img">
                             </div>
                             <h3 class="achievement-title">ISRO Project Presentation</h3>
                             <p class="achievement-description">Presented a project at Satish Dhawan Space Centre SHAR, Sriharikota, for World Space Week 2025 celebrations and received an official rocket launch memento from the Director.</p>

@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const htmlElement = document.documentElement;
     const themeIcon = themeToggleBtn.querySelector('i');
 
-    // Check for saved theme preference, otherwise default to light theme
+    // Check for saved theme preference, otherwise default to dark theme
     const savedTheme = localStorage.getItem('portfolio-theme');
-    const initialTheme = savedTheme || 'light';
+    const initialTheme = savedTheme || 'dark';
     setTheme(initialTheme);
 
     themeToggleBtn.addEventListener('click', () => {
@@ -920,4 +920,216 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAutoScroll('.skills-grid', 0.02);
     setupAutoScroll('.certifications-grid', 0.02);
     setupAutoScroll('.achievements-grid', 0.02);
+
+    /* ==========================================================================
+       INTERACTIVE CANVAS BACKGROUND (3D WIREFRAME FLOATING SHAPES)
+       ========================================================================== */
+    function initBgCanvas() {
+        const canvas = document.getElementById('bg-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        
+        let shapes = [];
+        const numShapes = 12;
+        const perspective = 400;
+        
+        // Define 3D Cube vertices and edges
+        const cubeVertices = [
+            {x: -1, y: -1, z: -1}, {x: 1, y: -1, z: -1}, {x: 1, y: 1, z: -1}, {x: -1, y: 1, z: -1},
+            {x: -1, y: -1, z: 1},  {x: 1, y: -1, z: 1},  {x: 1, y: 1, z: 1},  {x: -1, y: 1, z: 1}
+        ];
+        const cubeEdges = [
+            [0, 1], [1, 2], [2, 3], [3, 0], // Back face
+            [4, 5], [5, 6], [6, 7], [7, 4], // Front face
+            [0, 4], [1, 5], [2, 6], [3, 7]  // Connecting edges
+        ];
+        
+        // Define 3D Octahedron vertices and edges
+        const octaVertices = [
+            {x: 0, y: -1.4, z: 0},  {x: 1.4, y: 0, z: 0},  {x: 0, y: 0, z: -1.4},
+            {x: -1.4, y: 0, z: 0}, {x: 0, y: 0, z: 1.4},  {x: 0, y: 1.4, z: 0}
+        ];
+        const octaEdges = [
+            [0, 1], [0, 2], [0, 3], [0, 4], // Top pyramid
+            [5, 1], [5, 2], [5, 3], [5, 4], // Bottom pyramid
+            [1, 2], [2, 3], [3, 4], [4, 1]  // Middle ring
+        ];
+
+        let mouse = { x: null, y: null };
+        
+        class Shape3D {
+            constructor(type, x, y, size) {
+                this.type = type;
+                this.x = x; // 3D center position
+                this.y = y;
+                this.z = Math.random() * 200 - 100;
+                this.size = size;
+                
+                // Rotations in radians
+                this.rx = Math.random() * Math.PI * 2;
+                this.ry = Math.random() * Math.PI * 2;
+                this.rz = Math.random() * Math.PI * 2;
+                
+                // Rotation speeds
+                this.drx = (Math.random() - 0.5) * 0.01;
+                this.dry = (Math.random() - 0.5) * 0.01;
+                this.drz = (Math.random() - 0.5) * 0.01;
+                
+                // Drift speeds
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.vz = (Math.random() - 0.5) * 0.15;
+                
+                this.vertices = type === 'cube' ? cubeVertices : octaVertices;
+                this.edges = type === 'cube' ? cubeEdges : octaEdges;
+            }
+            
+            update() {
+                // Apply rotation
+                this.rx += this.drx;
+                this.ry += this.dry;
+                this.rz += this.drz;
+                
+                // Apply drift
+                this.x += this.vx;
+                this.y += this.vy;
+                this.z += this.vz;
+                
+                // Gentle push from mouse if close
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = this.x - mouse.x;
+                    const dy = this.y - mouse.y;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist < 200) {
+                        const force = ((200 - dist) / 200) * 0.2;
+                        this.x += (dx / dist) * force;
+                        this.y += (dy / dist) * force;
+                    }
+                }
+                
+                // Wrap around edges
+                const pad = this.size * 2;
+                if (this.x < -pad) this.x = width + pad;
+                if (this.x > width + pad) this.x = -pad;
+                if (this.y < -pad) this.y = height + pad;
+                if (this.y > height + pad) this.y = -pad;
+                if (this.z < -200) this.vz = Math.abs(this.vz);
+                if (this.z > 200) this.vz = -Math.abs(this.vz);
+            }
+            
+            draw(colorPrimary) {
+                ctx.save();
+                ctx.strokeStyle = colorPrimary;
+                // Calculate projected vertices
+                const projected = [];
+                
+                for (let v of this.vertices) {
+                    // 1. Scale
+                    let px = v.x * this.size;
+                    let py = v.y * this.size;
+                    let pz = v.z * this.size;
+                    
+                    // 2. Rotate around X axis
+                    let y1 = py * Math.cos(this.rx) - pz * Math.sin(this.rx);
+                    let z1 = py * Math.sin(this.rx) + pz * Math.cos(this.rx);
+                    
+                    // 3. Rotate around Y axis
+                    let x2 = px * Math.cos(this.ry) + z1 * Math.sin(this.ry);
+                    let z2 = -px * Math.sin(this.ry) + z1 * Math.cos(this.ry);
+                    
+                    // 4. Rotate around Z axis
+                    let x3 = x2 * Math.cos(this.rz) - y1 * Math.sin(this.rz);
+                    let y3 = x2 * Math.sin(this.rz) + y1 * Math.cos(this.rz);
+                    let z3 = z2;
+                    
+                    // 5. Project to 2D screen coordinates
+                    const sz = z3 + this.z;
+                    const scale = perspective / (perspective + sz);
+                    
+                    const screenX = this.x + x3 * scale;
+                    const screenY = this.y + y3 * scale;
+                    
+                    projected.push({x: screenX, y: screenY, scale: scale});
+                }
+                
+                // Draw edges
+                this.edges.forEach(edge => {
+                    const p1 = projected[edge[0]];
+                    const p2 = projected[edge[1]];
+                    
+                    // Opacity based on depth scale (further shapes are more faded)
+                    const avgScale = (p1.scale + p2.scale) / 2;
+                    ctx.globalAlpha = Math.max(0.02, Math.min(avgScale * 0.12, 0.25));
+                    ctx.lineWidth = Math.max(0.5, avgScale * 1.0);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                });
+                
+                ctx.restore();
+            }
+        }
+        
+        function init() {
+            shapes = [];
+            for (let i = 0; i < numShapes; i++) {
+                const type = Math.random() < 0.5 ? 'cube' : 'octahedron';
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const size = Math.random() * 40 + 35; // Size of wireframe
+                shapes.push(new Shape3D(type, x, y, size));
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            const colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#3b82f6';
+            
+            shapes.forEach(shape => {
+                shape.update();
+                shape.draw(colorPrimary);
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+        
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            init();
+        });
+        
+        init();
+        animate();
+    }
+    
+    initBgCanvas();
+
+    // Welcome Preloader Fade Out
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('welcome-preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 1800); // 1.8 seconds loading screen delay
+        }
+    });
 });
+
+
