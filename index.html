@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muthukumar S | Personal Portfolio | ECE Student & PCB Designer</title>
+    <meta name="description" content="Personal Portfolio of Muthukumar S - Electronics and Communication Engineering Student, PCB Designer, and VHDL Developer. Exploring VLSI, PCB Design, and AI.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Grid and Blobs for unique aesthetic -->
+    <div class="grid-overlay"></div>
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>Muthukumar S<span class="logo-accent">/&gt;</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#project" class="nav-link">Project</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer">
+        <button class="mobile-close-btn" aria-label="Close mobile menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobile-links">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#project" class="mobile-link">Project</a>
+            <a href="#certifications" class="mobile-link">Certifications</a>
+            <a href="#achievements" class="mobile-link">Achievements</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section section-padding">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title fade-in-up">
+                        Hi, I'm <span class="highlight-text">Muthukumar S</span>
+                    </h1>
+                    <h2 class="hero-subtitle fade-in-up">
+                        I am&nbsp;<span id="typed-text"></span><span class="typed-cursor">|</span>
+                    </h2>
+                    <h3 class="hero-headline fade-in-up">
+                        "Building the Future Through Electronics, VHDL, and Innovation."
+                    </h3>
+                    <p class="hero-description fade-in-up">
+                        I am an Electronics and Communication Engineering student with a strong interest in VLSI, PCB Design, and Artificial Intelligence. I enjoy solving real-world problems through technology and continuously improve my skills through internships, certifications, workshops, and technical projects.
+                    </p>
+                    <div class="hero-ctas fade-in-up">
+                        <a href="#project" class="btn btn-primary">
+                            <span>View Featured Project</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                    <div class="hero-socials fade-in-up">
+                        <a href="https://github.com/muthukumar80123-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muthukumar-s-4a2857300?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:muthukumar80123@gmail.com" aria-label="Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual: Profile Photo on Right -->
+                <div class="hero-visual fade-in-up">
+                    <div class="profile-image-container">
+                        <div class="profile-image-wrapper">
+                            <img src="profile.jpg" alt="Muthukumar S" class="profile-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Get To Know Me</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3 class="about-highlight">ECE Student, Designer & Enthusiast</h3>
+                        <p class="about-text">
+                            I am a passionate <strong>Electronics and Communication Engineering</strong> student currently pursuing my Bachelor's degree at <strong>Paavai Engineering College</strong>. My technical skills center on designing PCB layouts, writing hardware descriptions using VHDL, RTL design, and programming with Python and Basic Java. I am enthusiastic about applying engineering principles to innovative hardware-software projects and exploring emerging technologies.
+                        </p>
+                    </div>
+
+
+                </div>
+
+                <!-- Experience Section -->
+                <div class="experience-timeline-container">
+                    <h3 class="section-subheading text-center"><i class="fa-solid fa-briefcase"></i> Experience</h3>
+                    <div class="timeline">
+                        <!-- Node 1 (Newer) -->
+                        <div class="timeline-node left">
+                            <div class="timeline-content glass-card">
+                                <span class="timeline-date">August 2025 – November 2025</span>
+                                <h4 class="experience-title">VLSI Internship Program</h4>
+                                <h5 class="experience-company">EDU TANTR</h5>
+                                <ul class="experience-details">
+                                    <li>Actively participated in VLSI internship program tasks and digital design methodologies.</li>
+                                    <li>Worked on VLSI-related coding implementation and digital logic simulation.</li>
+                                    <li>Gained practical exposure to professional integrated circuit (IC) design and verification workflows.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Node 2 (Older) -->
+                        <div class="timeline-node right">
+                            <div class="timeline-content glass-card">
+                                <span class="timeline-date">June 16, 2025 – July 4, 2025</span>
+                                <h4 class="experience-title">PCB Design and Fabrication Intern</h4>
+                                <h5 class="experience-company">Enthu Technology Solution</h5>
+                                <ul class="experience-details">
+                                    <li>Designed multi-layer and single-layer PCB layouts using industry standard EDA tools.</li>
+                                    <li>Learned chemical etching, drilling, and fabrication processes for physical board manufacturing.</li>
+                                    <li>Worked closely on electronic circuit implementations and component assembly.</li>
+                                    <li>Gained valuable practical industry exposure and worked in a collaborative team setup.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">My Capabilities</span>
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-tab="technical">Technical Skills</button>
+                    <button class="tab-btn" data-tab="soft">Soft Skills</button>
+                </div>
+
+                <div class="skills-container">
+                    <!-- Technical Skills -->
+                    <div class="skills-grid tab-content active" id="technical">
+                        <!-- Skill 1: PCB Design -->
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-microchip skill-icon"></i>
+                                <h3 class="skill-title">PCB Design</h3>
+                            </div>
+                            <p class="skill-description">Designing schematic diagrams, circuit routing, trace spacing, and board layer optimization for hardware prototypes.</p>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 2: VHDL -->
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-diagram-project skill-icon"></i>
+                                <h3 class="skill-title">VHDL</h3>
+                            </div>
+                            <p class="skill-description">Describing digital systems behavior, RTL coding, writing testbenches, and simulating combinational & sequential digital circuits.</p>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 3: Python -->
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-brands fa-python skill-icon"></i>
+                                <h3 class="skill-title">Python Programming</h3>
+                            </div>
+                            <p class="skill-description">Writing clean scripts, algorithms, building applications, and integrating OpenCV/AI models.</p>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 4: Basic Java -->
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-brands fa-java skill-icon"></i>
+                                <h3 class="skill-title">Basic Java</h3>
+                            </div>
+                            <p class="skill-description">Understanding of Object-Oriented Programming (OOP) concepts, classes, objects, syntax structures, and basic algorithms.</p>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skill 5: MS Office -->
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-regular fa-file-word skill-icon"></i>
+                                <h3 class="skill-title">MS Office</h3>
+                            </div>
+                            <p class="skill-description">Proficient in documentation, spreadsheet calculation, slide design, project reports, and data analysis using Word, Excel & PowerPoint.</p>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="skills-grid tab-content" id="soft">
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-users skill-icon"></i>
+                                <h3 class="skill-title">Teamwork</h3>
+                            </div>
+                            <p class="skill-description">Working productively in multi-disciplinary teams during hackathons, projects, and academic events to produce quality results.</p>
+                        </div>
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-arrows-spin skill-icon"></i>
+                                <h3 class="skill-title">Adaptability</h3>
+                            </div>
+                            <p class="skill-description">Quickly learning new engineering methodologies, IDEs, programming paradigms, and adjusting to modern laboratory tools.</p>
+                        </div>
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-comments skill-icon"></i>
+                                <h3 class="skill-title">Communication</h3>
+                            </div>
+                            <p class="skill-description">Effectively presenting project ideas, writing detailed lab reports, and communicating complex technical terms clearly.</p>
+                        </div>
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-clock skill-icon"></i>
+                                <h3 class="skill-title">Time Management</h3>
+                            </div>
+                            <p class="skill-description">Balancing course work, internship schedules, certification courses, and projects by planning and prioritizing effectively.</p>
+                        </div>
+                        <div class="skill-card glass-card">
+                            <div class="skill-header">
+                                <i class="fa-solid fa-lightbulb skill-icon"></i>
+                                <h3 class="skill-title">Problem Solving</h3>
+                            </div>
+                            <p class="skill-description">Analyzing digital/analog circuit issues systematically and coming up with cost-effective, optimal software or hardware fixes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Project Section -->
+        <section id="project" class="projects-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Featured Work</span>
+                    <h2 class="section-title">Project</h2>
+                </div>
+                
+                <div class="project-showcase glass-card">
+                    <div class="project-visual-side">
+                        <img src="crop_iq.png" alt="Crop IQ Smart Agriculture Monitor" class="project-image">
+                    </div>
+                    <div class="project-info-side">
+                        <span class="project-tag">Artificial Intelligence + Agri-Tech</span>
+                        <h3 class="project-title">Crop IQ — Smart Agriculture Monitor</h3>
+                        <p class="project-description">
+                            Crop IQ is an intelligent agriculture application designed to monitor crop conditions, analyze weather data, and provide crop recommendations based on location and environmental factors.
+                        </p>
+                        <div class="project-tech-stack">
+                            <span>AI / ML</span>
+                            <span>Agri-Tech</span>
+                            <span>Live Data</span>
+                            <span>Python</span>
+                        </div>
+                        <button class="btn btn-primary open-project-btn" data-project="crop-iq">
+                            <span>View Project Case Study</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Verified Credentials</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                
+                <div class="certifications-container">
+                    <div class="certifications-grid">
+                        <!-- Cert 1 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <h3 class="cert-title">Internship Completion Certificates</h3>
+                            <p class="cert-desc">Granted by EDU TANTR (VLSI Internship Program) and Enthu Technology Solution (PCB Design and Fabrication Internship).</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="intern">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 2 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3 class="cert-title">Hackathon Participation Certificates</h3>
+                            <p class="cert-desc">Issued for active participation and product prototyping in multiple technical events and coding hackathons.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="hackathon">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 3 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="cert-title">Course Completed Certificates</h3>
+                            <p class="cert-desc">Granted for successfully finishing technical courses in programming, PCB design, and digital electronics.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="course">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 4 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <h3 class="cert-title">Academic & Technical Competitions</h3>
+                            <p class="cert-desc">Awards and recognition from national-level technical competitions, project exhibitions, and paper presentations conducted by bodies like ISRO and ISTE.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="competition">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 5 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <h3 class="cert-title">Bootcamps & Idea Development</h3>
+                            <p class="cert-desc">Credentials from intensive development programs covering ideation, prototyping, business modeling, and venture planning.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="bootcamp">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 6 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <h3 class="cert-title">Professional IT & Networking</h3>
+                            <p class="cert-desc">Vendor-specific technical credentials validating professional competence in networking, IT routing, and system architecture.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="professional">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cert 7 -->
+                        <div class="cert-card glass-card">
+                            <div class="cert-icon-wrapper">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <h3 class="cert-title">Technical Workshops & Seminars</h3>
+                            <p class="cert-desc">Certificates from specialized technical training workshops and seminars on IoT, Embedded AI, and professional branding.</p>
+                            <button class="btn btn-text view-cert-btn" data-cert="workshop">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Key Milestones</span>
+                    <h2 class="section-title">Achievements</h2>
+                </div>
+                
+                <div class="achievements-container">
+                    <div class="achievements-grid">
+                        <!-- Achievement 1 -->
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-medal"></i>
+                            </div>
+                            <h3 class="achievement-title">NPTEL Elite + Silver</h3>
+                            <p class="achievement-description">Scored 82% in the 12-week national-level course 'Introduction to Internet of Things' conducted by IIT Kharagpur (Jan-Apr 2025).</p>
+                        </div>
+
+                        <!-- Achievement 2 -->
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <h3 class="achievement-title">Top 10 Finalist - TechSprint: Vibe X 1.0</h3>
+                            <p class="achievement-description">Recognized as a Top 10 Finalist in the VIBE Coding Hackathon organized by GDG On Campus. Built a prototype using Google Technologies and qualified for the Grand Finale Pitch.</p>
+                        </div>
+
+
+                        <!-- Achievement 3 -->
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h3 class="achievement-title">ISTE Srinivasa Ramanujan Math Competitions</h3>
+                            <p class="achievement-description">Qualified and competed up to Level 3 (National Level) of the prestigious National Srinivasa Ramanujan Mathematical Competitions 2025-26 conducted by ISTE.</p>
+                        </div>
+
+                        <!-- Achievement 4 -->
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <h3 class="achievement-title">ISRO Project Presentation</h3>
+                            <p class="achievement-description">Presented a project at Satish Dhawan Space Centre SHAR, Sriharikota, for World Space Week 2025 celebrations and received an official rocket launch memento from the Director.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2 class="section-title">Contact</h2>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Info Panel -->
+                    <div class="contact-info-panel glass-card">
+                        <h3>Contact Information</h3>
+                        <p class="contact-panel-desc">Feel free to reach out to me for project collaborations, internship offers, or technical queries.</p>
+                        
+                        <div class="info-list">
+                            <div class="info-item">
+                                <a href="mailto:muthukumar80123@gmail.com" class="info-icon" aria-label="Email Muthukumar">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                                <div class="info-details">
+                                    <span>Email Me</span>
+                                    <a href="mailto:muthukumar80123@gmail.com">muthukumar80123@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <a href="tel:+916369428256" class="info-icon" aria-label="Call Muthukumar">
+                                    <i class="fa-solid fa-phone"></i>
+                                </a>
+                                <div class="info-details">
+                                    <span>Call / WhatsApp</span>
+                                    <a href="tel:+916369428256">+91 63694 28256</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <a href="https://maps.google.com/?q=Tiruchirapalli,+Tamil+Nadu,+India" target="_blank" rel="noopener noreferrer" class="info-icon" aria-label="View Location on Google Maps">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </a>
+                                <div class="info-details">
+                                    <span>Location</span>
+                                    <a href="https://maps.google.com/?q=Tiruchirapalli,+Tamil+Nadu,+India" target="_blank" rel="noopener noreferrer">Tiruchirapalli, Tamil Nadu, India</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links-panel">
+                            <h4>Connect With Me</h4>
+                            <div class="social-icons">
+                                <a href="https://github.com/muthukumar80123-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/muthukumar-s-4a2857300?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="resume-wrapper">
+                            <a href="resume.pdf" download="Muthukumar_S_Resume.pdf" class="btn btn-secondary" id="download-resume-btn">
+                                <i class="fa-solid fa-download"></i>
+                                <span>Download Resume</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 Muthukumar S. All rights reserved.</p>
+            <p class="footer-design">Designed & Built with <i class="fa-solid fa-heart" style="color: var(--primary);"></i> and Hardware Passion</p>
+        </div>
+    </footer>
+
+    <!-- Case Study Modal overlay -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button class="modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-project-details">
+                <!-- Dynamic Content Loaded by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal overlay -->
+    <div id="lightbox-modal" class="lightbox-overlay">
+        <button class="lightbox-close-btn" aria-label="Close image">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightbox-image" src="" alt="Certificate Preview">
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <div class="toast-content">
+            <i class="fa-solid fa-circle-check toast-icon"></i>
+            <span id="toast-message">Message sent successfully!</span>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
